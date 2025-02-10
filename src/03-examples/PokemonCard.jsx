@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useLayoutEffect, useRef } from 'react';
 
 export const PokemonCard = ({ id, name, sprites = [] }) => {
 
@@ -8,22 +8,21 @@ export const PokemonCard = ({ id, name, sprites = [] }) => {
     
     const { height, width } = h2Ref.current.getBoundingClientRect();
 
-    console.log({ height, width });
-
-  }, [third])
+  }, [name])
     
   return (
-    <section style={{ height: 200 }}>
+    <section style={{ height: 200, display: 'flex', flexDirection: 'row' }}>
 
-        <h2 className='text-capitalize'>#{id} - { name }</h2>
+      <h2 ref={h2Ref} className='text-capitalize'>
+        #{id} - { name }
+      </h2>
 
-        <div>
-            {
-                sprites.map( sprite => (
-                    <img key={ sprite } src={ sprite } alt={ name } />
-                ))
-            }
-        </div>
+      <div>
+        {sprites.map( sprite => (
+          <img key={ sprite } src={ sprite } alt={ name } />
+        ))}
+      </div>
+
 
     </section>
   )
